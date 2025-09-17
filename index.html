@@ -1,4 +1,23 @@
 <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            
+            navLinks.classList.toggle('active');
+            mobileBtn.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('navLinks');
+                const mobileBtn = document.querySelector('.mobile-menu-btn');
+                navLinks.classList.remove('active');
+                mobileBtn.classList.remove('active');
+            });
+        });
+
         // Slider functionality
         let currentSlides = {
             'slider1': 0,
@@ -1199,7 +1218,15 @@
     <nav>
         <div class="nav-container">
             <div class="logo">Fabian Louis</div>
-            <ul class="nav-links">
+            
+            <!-- Mobile Menu Button -->
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li class="dropdown">
                     <a href="#about">About</a>
