@@ -811,6 +811,53 @@
             }
 
             .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                flex-direction: column;
+                gap: 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s ease;
+                padding: 1rem 0;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                padding: 15px 20px;
+                display: block;
+                width: 100%;
+                text-align: left;
+                border-radius: 0;
+            }
+
+            .nav-links a:hover {
+                background: rgba(102, 126, 234, 0.1);
+                transform: none;
+            }
+
+            .nav-links a::after {
                 display: none;
             }
 
@@ -825,6 +872,13 @@
             .about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
+            }
+
+            .about-image {
+                width: 250px;
+                height: 250px;
+                font-size: 3rem;
             }
 
             .section {
@@ -833,6 +887,270 @@
 
             .section h2 {
                 font-size: 2rem;
+            }
+
+            /* Mobile Skills Grid */
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .skill-item {
+                margin-bottom: 1.5rem;
+            }
+
+            .skills-section {
+                padding: 40px 0;
+            }
+
+            /* Mobile Testimonials */
+            .testimonials-slider {
+                margin: 0 1rem;
+                border-radius: 15px;
+            }
+
+            .testimonial-slide {
+                padding: 30px 20px;
+                min-height: 180px;
+            }
+
+            .testimonial-text {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+
+            .testimonial-author {
+                font-size: 0.9rem;
+            }
+
+            .slider-dots {
+                padding: 15px;
+                margin-top: 10px;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            /* Mobile Services Grid */
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+                border-radius: 15px;
+            }
+
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            /* Mobile Portfolio Grid */
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .portfolio-item {
+                border-radius: 15px;
+            }
+
+            .portfolio-image {
+                height: 180px;
+                font-size: 1.1rem;
+            }
+
+            /* Mobile Contact Form */
+            .contact-form {
+                padding: 0 0.5rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+
+            .form-group textarea {
+                height: 100px;
+            }
+
+            /* Mobile Footer */
+            .social-links a {
+                margin: 0 10px;
+                padding: 12px;
+                font-size: 1.3rem;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            footer div[style*="color: #94a3b8"] p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+        }
+
+        /* Tablet Responsive */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .section {
+                padding: 70px 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .about-content {
+                gap: 2.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+
+            .testimonials-slider {
+                max-width: 700px;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 50px 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .about-image {
+                width: 200px;
+                height: 200px;
+                font-size: 2.5rem;
+            }
+
+            .service-card {
+                padding: 1.2rem;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .testimonials-slider {
+                margin: 0 0.5rem;
+            }
+
+            .testimonial-slide {
+                padding: 25px 15px;
+            }
+
+            .testimonial-text {
+                font-size: 0.95rem;
+            }
+
+            .contact-form {
+                padding: 0;
+            }
+
+            .social-links a {
+                margin: 0 8px;
+                padding: 10px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .service-card:hover,
+            .portfolio-item:hover,
+            .about-image:hover {
+                transform: none;
+            }
+
+            .service-card,
+            .portfolio-item {
+                cursor: default;
+            }
+
+            .btn:hover {
+                transform: none;
+            }
+
+            .social-links a:hover {
+                transform: none;
+            }
+
+            /* Ensure touch targets are at least 44px */
+            .nav-links a {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+
+            .dot {
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .dot::before {
+                content: '';
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transition: all 0.3s ease;
+            }
+
+            .dot.active::before {
+                background: linear-gradient(45deg, #667eea, #764ba2);
+                transform: scale(1.2);
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
             }
         }
     </style>
@@ -1092,6 +1410,30 @@
             navLinks.classList.toggle('active');
             mobileBtn.classList.toggle('active');
         }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('navLinks');
+                const mobileBtn = document.querySelector('.mobile-menu-btn');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileBtn.classList.remove('active');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.getElementById('navLinks');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileBtn.classList.remove('active');
+            }
+        });
 
         // Testimonials slider
         let testimonialIndex = 0;
