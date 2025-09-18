@@ -658,6 +658,141 @@
             border-color: rgba(240, 147, 251, 0.3);
         }
 
+        /* Skills Progress Bars */
+        .skills-section {
+            padding: 60px 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            margin-bottom: 2rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #f1f5f9;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            background-size: 200% 100%;
+            animation: shimmer 2s ease-in-out infinite;
+            border-radius: 10px;
+            transition: width 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            animation: progressShine 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Testimonials Slider */
+        .testimonials-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 300%;
+        }
+
+        .testimonial-slide {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            color: #f1f5f9;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            color: #94a3b8;
+            font-weight: bold;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dot.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(1.1);
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -730,19 +865,110 @@
         <div class="hero-content">
             <h1>Hello, I'm Fabian Louis</h1>
             <p>Web Developer & Designer</p>
-            <a href="#about" class="btn">Learn More About Fab</a>
+            <a href="#about" class="btn">Learn More About Me</a>
+        </div>
+        
+        <!-- Testimonials Slider -->
+        <div style="margin-top: 4rem;">
+            <h3 style="text-align: center; color: #f1f5f9; margin-bottom: 2rem;">What Clients Say</h3>
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"Absolutely amazing work! The website exceeded our expectations and increased our conversions by 150%."</p>
+                        <p class="testimonial-author">- Sarah Johnson, CEO TechStart</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"Professional, creative, and delivered on time. I couldn't be happier with the final result."</p>
+                        <p class="testimonial-author">- Michael Chen, Restaurant Owner</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"The attention to detail and user experience is outstanding. Highly recommended!"</p>
+                        <p class="testimonial-author">- Emma Davis, Marketing Director</p>
+                    </div>
+                </div>
+                <div class="slider-dots">
+                    <span class="dot active" onclick="currentTestimonial(1)"></span>
+                    <span class="dot" onclick="currentTestimonial(2)"></span>
+                    <span class="dot" onclick="currentTestimonial(3)"></span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
-        <h2>About Fab</h2>
+        <h2>About Me</h2>
         <div class="about-content">
             <div class="about-image">👨‍💻</div>
             <div class="about-text">
                 <p>I'm a passionate web developer with experience in creating beautiful and functional websites. I love turning ideas into reality through clean, efficient code and thoughtful design.</p>
                 <p>With expertise in HTML, CSS, JavaScript, and modern frameworks, I help businesses and individuals establish their online presence with professional, responsive websites.</p>
                 <p>When I'm not coding, you can find me exploring new technologies, contributing to open source projects, or enjoying a good cup of coffee while brainstorming the next big idea.</p>
+            </div>
+        </div>
+        
+        <!-- Skills Section with Progress Bars -->
+        <div class="skills-section">
+            <h3 style="text-align: center; color: #f1f5f9; margin-bottom: 2rem;">My Skills</h3>
+            <div class="skills-grid">
+                <div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>React</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Node.js</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>UI/UX Design</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Database</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -866,6 +1092,50 @@
             navLinks.classList.toggle('active');
             mobileBtn.classList.toggle('active');
         }
+
+        // Testimonials slider
+        let testimonialIndex = 0;
+
+        function currentTestimonial(n) {
+            testimonialIndex = n - 1;
+            const track = document.getElementById('testimonialsTrack');
+            const dots = document.querySelectorAll('.dot');
+            
+            track.style.transform = `translateX(-${testimonialIndex * 33.333}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[testimonialIndex].classList.add('active');
+        }
+
+        // Auto testimonials
+        setInterval(() => {
+            testimonialIndex = (testimonialIndex + 1) % 3;
+            currentTestimonial(testimonialIndex + 1);
+        }, 5000);
+
+        // Skills animation on scroll
+        function animateSkills() {
+            const skillBars = document.querySelectorAll('.progress-fill');
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateSkills);
+
+        // Add loading animation to skills
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                animateSkills();
+            }, 1000);
+        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
