@@ -793,6 +793,21 @@
             transform: scale(1.1);
         }
 
+        /* Desktop/Mobile Section Visibility */
+        .testimonials-mobile-section {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-mobile-section {
+                display: block;
+            }
+            
+            .testimonials-desktop-section {
+                display: none;
+            }
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1181,27 +1196,27 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Hello, I'm Fab</h1>
+            <h1>Hello, I'm Fabian Louis</h1>
             <p>Web Developer & Designer</p>
             <a href="#about" class="btn">Learn More About Me</a>
         </div>
         
-        <!-- Testimonials Slider -->
-        <div style="margin-top: 4rem;">
+        <!-- Testimonials Slider - Desktop Version -->
+        <div class="testimonials-desktop-section" style="margin-top: 4rem;">
             <h3 style="text-align: center; color: #f1f5f9; margin-bottom: 2rem;">What Clients Say</h3>
             <div class="testimonials-slider">
                 <div class="testimonials-track" id="testimonialsTrack">
                     <div class="testimonial-slide">
                         <p class="testimonial-text">"Absolutely amazing work! The website exceeded our expectations and increased our conversions by 150%."</p>
-                        <p class="testimonial-author">- Japheth Ochieng', CEO TechStart</p>
+                        <p class="testimonial-author">- Sarah Johnson, CEO TechStart</p>
                     </div>
                     <div class="testimonial-slide">
                         <p class="testimonial-text">"Professional, creative, and delivered on time. I couldn't be happier with the final result."</p>
-                        <p class="testimonial-author">- Chichiria, Restaurant Owner</p>
+                        <p class="testimonial-author">- Michael Chen, Restaurant Owner</p>
                     </div>
                     <div class="testimonial-slide">
                         <p class="testimonial-text">"The attention to detail and user experience is outstanding. Highly recommended!"</p>
-                        <p class="testimonial-author">- Cynthia Merab, Marketing Director</p>
+                        <p class="testimonial-author">- Emma Davis, Marketing Director</p>
                     </div>
                 </div>
                 <div class="slider-dots">
@@ -1435,24 +1450,55 @@
             }
         });
 
-        // Testimonials slider
+        // Testimonials slider - Desktop version
         let testimonialIndex = 0;
 
         function currentTestimonial(n) {
             testimonialIndex = n - 1;
             const track = document.getElementById('testimonialsTrack');
-            const dots = document.querySelectorAll('.dot');
+            const dots = document.querySelectorAll('#testimonialsTrack').length ? 
+                document.querySelectorAll('.testimonials-desktop-section .dot') : [];
             
-            track.style.transform = `translateX(-${testimonialIndex * 33.333}%)`;
-            
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[testimonialIndex].classList.add('active');
+            if (track) {
+                track.style.transform = `translateX(-${testimonialIndex * 33.333}%)`;
+                
+                dots.forEach(dot => dot.classList.remove('active'));
+                if (dots[testimonialIndex]) {
+                    dots[testimonialIndex].classList.add('active');
+                }
+            }
         }
 
-        // Auto testimonials
+        // Testimonials slider - Mobile version
+        let testimonialIndexMobile = 0;
+
+        function currentTestimonialMobile(n) {
+            testimonialIndexMobile = n - 1;
+            const track = document.getElementById('testimonialsTrackMobile');
+            const dots = document.querySelectorAll('#testimonialsTrackMobile').length ? 
+                document.querySelectorAll('.testimonials-mobile-section .dot') : [];
+            
+            if (track) {
+                track.style.transform = `translateX(-${testimonialIndexMobile * 33.333}%)`;
+                
+                dots.forEach(dot => dot.classList.remove('active'));
+                if (dots[testimonialIndexMobile]) {
+                    dots[testimonialIndexMobile].classList.add('active');
+                }
+            }
+        }
+
+        // Auto testimonials for both versions
         setInterval(() => {
-            testimonialIndex = (testimonialIndex + 1) % 3;
-            currentTestimonial(testimonialIndex + 1);
+            // Desktop version
+            if (window.innerWidth > 768) {
+                testimonialIndex = (testimonialIndex + 1) % 3;
+                currentTestimonial(testimonialIndex + 1);
+            } else {
+                // Mobile version
+                testimonialIndexMobile = (testimonialIndexMobile + 1) % 3;
+                currentTestimonialMobile(testimonialIndexMobile + 1);
+            }
         }, 5000);
 
         // Skills animation on scroll
@@ -1512,4 +1558,3 @@
     </script>
 </body>
 </html>
-
