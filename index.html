@@ -36,7 +36,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Navigation hover effects */
         .logo:hover {
             background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
             background-size: 200% 200%;
@@ -81,17 +80,13 @@
             color: #cbd5e1;
             font-weight: 500;
             transition: color 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: #3498db;
             transform: translateY(-2px);
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* Enhanced navigation link hover with underline effect */
-        .nav-links a {
-            position: relative;
         }
 
         .nav-links a::after {
@@ -110,7 +105,6 @@
             width: 100%;
         }
 
-        /* Simple Mobile Menu Button */
         .mobile-menu-btn {
             display: none;
             flex-direction: column;
@@ -793,21 +787,6 @@
             transform: scale(1.1);
         }
 
-        /* Desktop/Mobile Section Visibility */
-        .testimonials-mobile-section {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .testimonials-mobile-section {
-                display: block;
-            }
-            
-            .testimonials-desktop-section {
-                display: none;
-            }
-        }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -904,7 +883,6 @@
                 font-size: 2rem;
             }
 
-            /* Mobile Skills Grid */
             .skills-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -918,7 +896,6 @@
                 padding: 40px 0;
             }
 
-            /* Mobile Testimonials */
             .testimonials-slider {
                 margin: 0 1rem;
                 border-radius: 15px;
@@ -948,7 +925,6 @@
                 height: 10px;
             }
 
-            /* Mobile Services Grid */
             .services-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -965,7 +941,6 @@
                 font-size: 1.5rem;
             }
 
-            /* Mobile Portfolio Grid */
             .portfolio-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -980,7 +955,6 @@
                 font-size: 1.1rem;
             }
 
-            /* Mobile Contact Form */
             .contact-form {
                 padding: 0 0.5rem;
             }
@@ -995,7 +969,6 @@
                 height: 100px;
             }
 
-            /* Mobile Footer */
             .social-links a {
                 margin: 0 10px;
                 padding: 12px;
@@ -1138,7 +1111,6 @@
                 transform: none;
             }
 
-            /* Ensure touch targets are at least 44px */
             .nav-links a {
                 min-height: 44px;
                 display: flex;
@@ -1208,15 +1180,15 @@
                 <div class="testimonials-track" id="testimonialsTrack">
                     <div class="testimonial-slide">
                         <p class="testimonial-text">"Absolutely amazing work! The website exceeded our expectations and increased our conversions by 150%."</p>
-                        <p class="testimonial-author">- Sarah Johnson, CEO TechStart</p>
+                        <p class="testimonial-author">- Japheth Ochieng'</p>
                     </div>
                     <div class="testimonial-slide">
                         <p class="testimonial-text">"Professional, creative, and delivered on time. I couldn't be happier with the final result."</p>
-                        <p class="testimonial-author">- Michael Chen, Restaurant Owner</p>
+                        <p class="testimonial-author">- Chichiria</p>
                     </div>
                     <div class="testimonial-slide">
                         <p class="testimonial-text">"The attention to detail and user experience is outstanding. Highly recommended!"</p>
-                        <p class="testimonial-author">- Emma Davis, Marketing Director</p>
+                        <p class="testimonial-author">- Cynthia Merab</p>
                     </div>
                 </div>
                 <div class="slider-dots">
@@ -1450,14 +1422,13 @@
             }
         });
 
-        // Testimonials slider - Desktop version
+        // Testimonials slider
         let testimonialIndex = 0;
 
         function currentTestimonial(n) {
             testimonialIndex = n - 1;
             const track = document.getElementById('testimonialsTrack');
-            const dots = document.querySelectorAll('#testimonialsTrack').length ? 
-                document.querySelectorAll('.testimonials-desktop-section .dot') : [];
+            const dots = document.querySelectorAll('.testimonials-desktop-section .dot');
             
             if (track) {
                 track.style.transform = `translateX(-${testimonialIndex * 33.333}%)`;
@@ -1469,36 +1440,10 @@
             }
         }
 
-        // Testimonials slider - Mobile version
-        let testimonialIndexMobile = 0;
-
-        function currentTestimonialMobile(n) {
-            testimonialIndexMobile = n - 1;
-            const track = document.getElementById('testimonialsTrackMobile');
-            const dots = document.querySelectorAll('#testimonialsTrackMobile').length ? 
-                document.querySelectorAll('.testimonials-mobile-section .dot') : [];
-            
-            if (track) {
-                track.style.transform = `translateX(-${testimonialIndexMobile * 33.333}%)`;
-                
-                dots.forEach(dot => dot.classList.remove('active'));
-                if (dots[testimonialIndexMobile]) {
-                    dots[testimonialIndexMobile].classList.add('active');
-                }
-            }
-        }
-
-        // Auto testimonials for both versions
+        // Auto testimonials
         setInterval(() => {
-            // Desktop version
-            if (window.innerWidth > 768) {
-                testimonialIndex = (testimonialIndex + 1) % 3;
-                currentTestimonial(testimonialIndex + 1);
-            } else {
-                // Mobile version
-                testimonialIndexMobile = (testimonialIndexMobile + 1) % 3;
-                currentTestimonialMobile(testimonialIndexMobile + 1);
-            }
+            testimonialIndex = (testimonialIndex + 1) % 3;
+            currentTestimonial(testimonialIndex + 1);
         }, 5000);
 
         // Skills animation on scroll
